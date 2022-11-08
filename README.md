@@ -1,2 +1,1 @@
-# Git_one
-# git
+# SSUTUDY
