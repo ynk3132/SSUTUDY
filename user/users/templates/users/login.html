@@ -1,17 +1,31 @@
-로그인 페이지
-<br>
-
-{% if user.is_authenticated %}
-    로그인성공!
-    {{user.username}}님 환영합니다.
-    <a href="{% url 'user:logout' %}">로그아웃</a>
-{% else %}
-
-<form action="" method="POST">
-    {% csrf_token %}
-    <input name="username" type="text">
-    <input name="password" type="password">
-    <input type="submit" value="로그인">
-</form>
-<a href="{% url 'user:signup'%}">회원가입</a>
-{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SSUTUDY</title>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    </head>
+    <body style="background-color:Beige;">
+        <h1>로그인 페이지</h1>
+        <br>
+        {% if user.is_authenticated %}   
+        <img src="{{user.profile_img.url}}" alt="프로필사진" style="width: 400px; height:300px;">
+        {{user.username}}님 환영합니다.
+        <br>
+        <a href="{% url 'user:logout' %}">로그아웃</a>
+        <a href="/SSUTUDY/main">홈으로</a>
+        {% else %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input name="username" type="text">
+            <input name="password" type="password">
+            <input type="submit" value="로그인">
+        </form>
+        <a href="{% url 'user:signup'%}">회원가입</a>
+        <a href="/SSUTUDY/main">홈으로</a>
+        {% endif %}
+        <script src="/static/js/move.js" type="text/javascript"></script>
+    </body>

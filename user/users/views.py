@@ -23,7 +23,7 @@ def logout_view(request):
 
 def signup_view(request):
     if request.method=="POST":
-        print(request.POST)
+        profile_img = request.FILES["profile_img"]
         username = request.POST["username"]
         password = request.POST["password"]
         firstname = request.POST["firstname"]
@@ -35,6 +35,7 @@ def signup_view(request):
         user.last_name = lastname
         user.first_name = firstname
         user.student_id = student_id
+        user.profile_img = profile_img
         user.save()
         return redirect("user:login")
 
