@@ -16,7 +16,7 @@
         {{user.username}}님 환영합니다.
         <br>
         <a href="{% url 'user:logout' %}">로그아웃</a>
-        <a href="/SSUTUDY/main">홈으로</a>
+        <a href="/SSUTUDY">홈으로</a>
         {% else %}
         <form action="" method="POST">
             {% csrf_token %}
@@ -25,7 +25,7 @@
             <input type="submit" value="로그인">
         </form>
         <a href="{% url 'user:signup'%}">회원가입</a>
-        <a href="/SSUTUDY/main">홈으로</a>
+        <a href="/SSUTUDY">홈으로</a>
         {% endif %}
         <script src="/static/js/move.js" type="text/javascript"></script>
     </body>
