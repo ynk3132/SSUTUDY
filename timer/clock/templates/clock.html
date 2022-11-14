@@ -1,0 +1,41 @@
+<body>
+    <h1>hello</h1>
+    <button id="button" onclick="click1()">timer</button>
+    <h1 id="clock"></h1>
+    <script>
+        const clock = document.querySelector("#clock");
+        const button = document.querySelector("#button");
+        let interval;
+        let clicked;
+        clicked = false;
+
+        function getClock() {
+            const date = new Date();
+            const hours = String(date.getHours()).padStart(2, "0");
+            const min = String(date.getMinutes()).padStart(2, "0");
+            const sec = String(date.getSeconds()).padStart(2, "0");
+            clock.innerText = `${hours}:${min}:${sec}`;
+        }
+
+        function click1() {
+            if(clicked == false) {
+                click2();
+                clicked = true;
+            }
+            else {
+                click3();
+                clicked = false;
+            }
+        }
+
+        function click2() {
+            getClock();
+            interval = setInterval(getClock, 1000);
+        }
+
+        function click3() {
+            clearInterval(interval);
+            //clock.innerText = 'hi';
+        }
+    </script>
+</body>

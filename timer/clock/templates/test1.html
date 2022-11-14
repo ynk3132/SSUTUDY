@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+<button type="button" onclick="clicked()"> test1</button>
+<script>
+    let timer
+
+    function clicked() {
+        timer = setInterval(getJSON, 1000)
+    }
+
+    function print() {
+        console.log("asdfasdf");
+    }
+
+    function getJSON() {
+        $.ajax({
+            type:"get",
+            url:"/static/check.json",
+            dataType:"json",
+            success: function(data){
+                console.log("통신성공");
+                console.log(data);
+    /*                    str = '<TR>'; 
+                    $.each(data , function(i){
+                        str += '<TD>' + data[i].no + '</TD> <TD>' + data[i].name + '</TD> <TD>' + data[i].tel + '</TD> <TD>' + data[i].addr + '</TD>' + '<TD>' + data[i].status + '</TD> <TD>' + data[i].comment + '</TD> <TD>' + data[i].date + '</TD>';
+                        str += '</TR>';
+                    });
+                $('.table_body').append(str);*/
+            },
+            error:function(){
+                console.log("통신에러");
+            }
+        })
+    }
+
+
+</script>
+</body>
