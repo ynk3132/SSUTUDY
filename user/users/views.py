@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from .models import User
+from django.http import HttpResponseRedirect 
+
 
 # Create your views here.
 def login_view(request):
@@ -30,13 +32,26 @@ def signup_view(request):
         lastname = request.POST["lastname"]
         email = request.POST["email"]
         student_id = request.POST["student_id"]
+        content = request.POST["content"]
 
-        user = User.objects.create_user(username, email, password)
+        user = User.objects.create_user(username, email, password, content)
         user.last_name = lastname
         user.first_name = firstname
         user.student_id = student_id
         user.profile_img = profile_img
+        user.content = content
         user.save()
         return redirect("user:login")
 
     return render(request, "users/signup.html")
+
+def todoappView(request):
+    all_todo_items = User.objects.all()
+    return render(request, 'users/todo.html',
+    {'all_items':all_todo_items})
+
+def addTodoView(request):
+    x = request.POST['content']
+    new_item = User(content = x)
+    new_item.save()
+    return HttpResponseRedirect('/users/todo/')

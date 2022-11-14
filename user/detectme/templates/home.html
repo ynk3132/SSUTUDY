@@ -7,12 +7,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SSUTUDY</title>
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static '/css/main.css' %}">
     </head>
     <body style="background-color:Beige;">
-        <h1 style="color:#808080">SSUTUDY</h1>
-        <img class="profile" src="{{user.profile_img.url}}" alt="Image not found" onerror="this.src=`{% static 'image/profile.png' %}`;" />
-        <a>{{user.username}}</a>
+        <h1 id=main>SSUTUDY</h1>
+        <img class="profile" src="{{user.profile_img.url}}" alt="Image not found" onerror="this.src=`{% static 'image/profile.png' %}`;" style="width: 200px; height:200px;"/>
         <div class="v-line">
         </div>
         <a class="reg" href="{% url 'user:signup'%}">회원가입</a>
@@ -37,11 +36,24 @@
                     </div>
                 <td>
                     <img id="img" src="{% static 'image/rectangle.png' %}"
-                        style="width: 400px; height: 300px"
-                    />
+                        style="width: 400px; height: 300px"/>
+                </td>
+            </tr>
+            <tr>
+                <td><h1 id="topic">오늘 할 일</h1>
+                    <a class="reg" href="{% url 'user:todo'%}">오늘의 공부</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        {% for i in user.all_items %}
+                        <li>{{i.content}}</li>
+                        {% endfor %}
+                    </ul> 
                 </td>
             </tr>
         </table>
+        <p style="margin-left:110px; font-size: 25px;">{{user.username}}</p>
         <script>
             function record(){
                 //startClock();

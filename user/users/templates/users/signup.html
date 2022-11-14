@@ -1,25 +1,36 @@
-<body style="background-color:Beige;">
-    <h1>회원가입</h1>
-    <br>
-
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>아이디</p>
-        <input name="username" type="text">
-        <p>비밀번호</p>
-        <input name="password" type="password">
-        <p>성</p>
-        <input name="firstname" type="text">
-        <p>이름</p>
-        <input name="lastname" type="text">
-        <p>이메일</p>
-        <input name="email" type="text">
-        <p>학번</p>
-        <input name="student_id" type="text">
-        <p>프로필사진</p>
-        <input name="profile_img" type="file">
-        <input type="submit" value="회원가입">
-        <br>
-        <a href="/SSUTUDY">홈으로</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SSUTUDY</title>
+        <link rel="stylesheet" href="{% static '/css/index.css' %}">
+    </head>
+<body>
+    <div id="signup" style="margin: 0 auto;">
+        <h1>회원가입</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>아이디</p>
+            <input name="username" type="text">
+            <p>비밀번호</p>
+            <input name="password" type="password">
+            <p>성</p>
+            <input name="firstname" type="text">
+            <p>이름</p>
+            <input name="lastname" type="text">
+            <p>이메일</p>
+            <input name="email" type="text">
+            <p>학번</p>
+            <input name="student_id" type="text">
+            <p>프로필사진</p>
+            <input name="profile_img" type="file">
+            <input type="submit" value="회원가입">
+            <br>
+            <br>
+            <a href="/SSUTUDY">홈으로</a>
     </form>
+    </div>
 </body>
